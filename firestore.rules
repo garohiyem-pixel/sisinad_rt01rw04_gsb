@@ -1,0 +1,49 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isValidId(id) {
+      return id is string && id.size() > 0 && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    // Default deny for unmatched collections
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Connection test document
+    match /test/{docId} {
+      allow read, write: if true;
+    }
+
+    // Warga Collection
+    match /warga/{wargaId} {
+      allow read, write: if true;
+    }
+
+    // Kas Collection
+    match /kas/{kasId} {
+      allow read, write: if true;
+    }
+
+    // Agenda Kegiatan
+    match /agenda/{agendaId} {
+      allow read, write: if true;
+    }
+
+    // Notulen Rapat
+    match /notulen/{notulenId} {
+      allow read, write: if true;
+    }
+
+    // Pengaduan Warga
+    match /pengaduan/{pengaduanId} {
+      allow read, write: if true;
+    }
+
+    // Pengaturan Aplikasi
+    match /settings/{settingsId} {
+      allow read, write: if true;
+    }
+  }
+}

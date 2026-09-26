@@ -1,0 +1,169 @@
+{
+  "entities": {
+    "Warga": {
+      "title": "Warga",
+      "description": "Data warga RT 001 RW 004",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "nik": { "type": "string" },
+        "noKk": { "type": "string" },
+        "nama": { "type": "string" },
+        "alamatGsb": { "type": "string" },
+        "gang": { "type": "string" },
+        "alamatKtp": { "type": "string" },
+        "isKtpTalagasari": { "type": "boolean" },
+        "noHp": { "type": "string" },
+        "statusTinggal": { "type": "string", "enum": ["Permanen", "Kontrak"] },
+        "isAdmin": { "type": "boolean" },
+        "jabatan": { "type": "string" },
+        "password": { "type": "string" },
+        "jenisKelamin": { "type": "string" },
+        "tempatLahir": { "type": "string" },
+        "tanggalLahir": { "type": "string" },
+        "pekerjaan": { "type": "string" },
+        "pendidikan": { "type": "string" },
+        "keterangan": { "type": "string" },
+        "fotoKtp": { "type": "string" },
+        "fotoKk": { "type": "string" },
+        "anggotaKeluarga": {
+          "type": "array",
+          "items": { "type": "object" },
+          "description": "Daftar anggota keluarga yang bertempat tinggal di alamat rumah KK ini"
+        },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "nama", "alamatGsb", "gang", "statusTinggal"]
+    },
+    "TransaksiKas": {
+      "title": "TransaksiKas",
+      "description": "Catatan transaksi kas dan dana sosial RT",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "tanggal": { "type": "string" },
+        "jenis": { "type": "string", "enum": ["masuk", "keluar"] },
+        "akun": { "type": "string", "enum": ["KAS", "DANSOS"] },
+        "nominal": { "type": "number" },
+        "peruntukan": { "type": "string" },
+        "alamatGsb": { "type": "string" },
+        "namaWarga": { "type": "string" },
+        "periodeBulan": { "type": "string" },
+        "metode": { "type": "string" },
+        "status": { "type": "string", "enum": ["verified", "pending", "rejected"] },
+        "buktiBayar": { "type": "string" },
+        "catatan": { "type": "string" },
+        "inputBy": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "tanggal", "jenis", "akun", "nominal", "peruntukan", "status"]
+    },
+    "AgendaKegiatan": {
+      "title": "AgendaKegiatan",
+      "description": "Agenda kegiatan lingkungan RT",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "judul": { "type": "string" },
+        "tanggal": { "type": "string" },
+        "waktu": { "type": "string" },
+        "lokasi": { "type": "string" },
+        "deskripsi": { "type": "string" },
+        "kategori": { "type": "string" },
+        "status": { "type": "string", "enum": ["Akan Datang", "Selesai", "Berlangsung"] },
+        "penanggungJawab": { "type": "string" }
+      },
+      "required": ["id", "judul", "tanggal", "waktu", "lokasi", "kategori", "status"]
+    },
+    "NotulenRapat": {
+      "title": "NotulenRapat",
+      "description": "Notulen musyawarah atau rapat warga RT",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "judulRapat": { "type": "string" },
+        "tanggal": { "type": "string" },
+        "waktu": { "type": "string" },
+        "tempat": { "type": "string" },
+        "pimpinanRapat": { "type": "string" },
+        "notulis": { "type": "string" },
+        "narasumber": { "type": "array" },
+        "jumlahHadir": { "type": "number" },
+        "agendaPembahasan": { "type": "string" },
+        "isiNotulen": { "type": "string" },
+        "keputusan": { "type": "array" },
+        "dokumenAsliNama": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "judulRapat", "tanggal", "pimpinanRapat", "notulis"]
+    },
+    "AppSettings": {
+      "title": "AppSettings",
+      "description": "Pengaturan identitas dan rekening RT",
+      "type": "object",
+      "properties": {
+        "namaRtRw": { "type": "string" },
+        "perumahan": { "type": "string" },
+        "desa": { "type": "string" },
+        "kecamatan": { "type": "string" },
+        "kabupaten": { "type": "string" },
+        "logoUrl": { "type": "string" },
+        "iuranKasNominal": { "type": "number" },
+        "iuranDansosNominal": { "type": "number" },
+        "periodeAktif": { "type": "string" },
+        "daftarGang": { "type": "array" },
+        "rekening": { "type": "object" }
+      },
+      "required": ["namaRtRw", "perumahan", "desa", "iuranKasNominal", "iuranDansosNominal"]
+    },
+    "PengaduanWarga": {
+      "title": "PengaduanWarga",
+      "description": "Layanan aspirasi dan pengaduan warga RT 001 RW 004",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "judul": { "type": "string" },
+        "kategori": { "type": "string" },
+        "deskripsi": { "type": "string" },
+        "lokasiGang": { "type": "string" },
+        "namaPelapor": { "type": "string" },
+        "alamatGsb": { "type": "string" },
+        "isAnonim": { "type": "boolean" },
+        "noHp": { "type": "string" },
+        "fotoBukti": { "type": "string" },
+        "status": { "type": "string", "enum": ["Menunggu", "Diproses", "Selesai", "Ditolak"] },
+        "tanggapanRt": { "type": "string" },
+        "tanggalTanggapan": { "type": "string" },
+        "petugasPenindak": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "judul", "kategori", "deskripsi", "status", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/warga/{wargaId}": {
+      "schema": "Warga",
+      "description": "Koleksi data warga RT"
+    },
+    "/kas/{kasId}": {
+      "schema": "TransaksiKas",
+      "description": "Koleksi transaksi kas RT"
+    },
+    "/agenda/{agendaId}": {
+      "schema": "AgendaKegiatan",
+      "description": "Koleksi agenda kegiatan RT"
+    },
+    "/notulen/{notulenId}": {
+      "schema": "NotulenRapat",
+      "description": "Koleksi notulen rapat RT"
+    },
+    "/pengaduan/{pengaduanId}": {
+      "schema": "PengaduanWarga",
+      "description": "Koleksi aspirasi dan pengaduan warga RT"
+    },
+    "/settings/{settingsId}": {
+      "schema": "AppSettings",
+      "description": "Koleksi konfigurasi sistem RT"
+    }
+  }
+}

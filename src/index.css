@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 10mm 12mm;
+  }
+
+  body {
+    background: #ffffff !important;
+    color: #0f172a !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Hide app navigation, main container, and modal header controls during print */
+  body > #root > *:not(.print-modal-portal),
+  nav,
+  header,
+  footer,
+  aside,
+  button,
+  .print-controls,
+  .print\:hidden {
+    display: none !important;
+  }
+
+  /* Make modal container unconstrained and fill standard page */
+  .print-modal-portal,
+  .print-modal-container {
+    position: static !important;
+    inset: auto !important;
+    background: transparent !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    max-height: none !important;
+    height: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow: visible !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+
+  #printable-report {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+
+  table, tr, td, th, .avoid-page-break {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+}

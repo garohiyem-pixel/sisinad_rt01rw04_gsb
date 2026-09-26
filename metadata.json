@@ -1,0 +1,8 @@
+{
+  "name": "Sistem Administrasi RT 001 RW 004 GSB",
+  "description": "Sistem Administrasi dan Keuangan Kas RT 001 RW 004 Perum Griya Sutera Balaraja, Desa Talagasari",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
